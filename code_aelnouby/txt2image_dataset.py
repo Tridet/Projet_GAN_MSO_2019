@@ -30,7 +30,7 @@ class Text2ImageDataset(Dataset):
 
     def __getitem__(self, idx):
         if self.dataset is None:
-            self.dataset = h5py.File(self.datasetFile, mode='r')
+            self.dataset = h5py.File(self.datasetFile, mode='r', swmr=True)
             self.dataset_keys = [str(k) for k in self.dataset[self.split].keys()]
 
         example_name = self.dataset_keys[idx]

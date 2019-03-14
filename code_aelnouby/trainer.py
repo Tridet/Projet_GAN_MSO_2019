@@ -5,10 +5,13 @@ from torch import nn
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
 
+import nltk
+from models_ import InferSent
 from txt2image_dataset import Text2ImageDataset
 from models.gan_factory import gan_factory
 from utils import Utils, Logger
 from PIL import Image
+
 import os
 
 class Trainer(object):
@@ -31,8 +34,10 @@ class Trainer(object):
 
         if dataset == 'birds':
             self.dataset = Text2ImageDataset(config['birds_dataset_path'], split=split)
+            self.model = torch.load(config["birds_model_path"])
         elif dataset == 'flowers':
             self.dataset = Text2ImageDataset(config['flowers_dataset_path'], split=split)
+            self.model = torch.load(config["flowers_model_path"])
         else:
             print('Dataset not supported, please select either birds or flowers.')
             exit()
@@ -418,32 +423,90 @@ class Trainer(object):
                 Utils.save_checkpoint(self.discriminator, self.generator, self.checkpoints_path, epoch)
 
     def predict(self):
-        for sample in self.data_loader:
-            right_images = sample['right_images']
-            right_embed = sample['right_embed']
-            txt = sample['txt']
+        txt = ["the blue flower has a yellow center","the yellow flower has a blue pistil", "the red flower has pink pistil and long petals"]
+        size = len(txt)
+        if not os.path.exists('results/{0}'.format(self.save_path)):
+            os.makedirs('results/{0}'.format(self.save_path))
 
-            if not os.path.exists('results/{0}'.format(self.save_path)):
-                os.makedirs('results/{0}'.format(self.save_path))
+        right_embed = torch.from_numpy(self.model.encode(txt, tokenize=True))
+        right_embed = Variable(right_embed).cuda()
+        noise = Variable(torch.randn(size, 100)).cuda()
+        noise = noise.view(noise.size(0), 100, 1, 1)
+        fake_images = self.generator(right_embed, noise)
+        #self.logger.draw(right_images, fake_images)
 
-            right_images = Variable(right_images.float()).cuda()
-            right_embed = Variable(right_embed.float()).cuda()
+        for image, t in zip(fake_images, txt):
+            im = Image.fromarray(image.data.mul_(127.5).add_(127.5).byte().permute(1, 2, 0).cpu().numpy())
+            im.save('results/{0}/{1}.jpg'.format(self.save_path, t.replace("/", "").replace("\n","")[:100]))
+            print(t)
+        # for sample in self.data_loader:
+        #     right_images = sample['right_images']
+        #     right_embed = sample['right_embed']
+            
+        #     txt = sample['txt']
 
-            # Train the generator
-            noise = Variable(torch.randn(right_images.size(0), 100)).cuda()
-            noise = noise.view(noise.size(0), 100, 1, 1)
-            fake_images = self.generator(right_embed, noise)
+        #     if not os.path.exists('results/{0}'.format(self.save_path)):
+        #         os.makedirs('results/{0}'.format(self.save_path))
 
-            self.logger.draw(right_images, fake_images)
+        #     right_images = Variable(right_images.float()).cuda()
+        #     right_embed = Variable(right_embed.float()).cuda()
 
-            for image, t in zip(fake_images, txt):
-                im = Image.fromarray(image.data.mul_(127.5).add_(127.5).byte().permute(1, 2, 0).cpu().numpy())
-                im.save('results/{0}/{1}.jpg'.format(self.save_path, t.replace("/", "")[:100]))
-                print(t)
+        #     # Train the generator
+        #     noise = Variable(torch.randn(right_images.size(0), 100)).cuda()
+        #     noise = noise.view(noise.size(0), 100, 1, 1)
+        #     fake_images = self.generator(right_embed, noise)
 
+        #     self.logger.draw(right_images, fake_images)
 
+        #     for image, t in zip(fake_images, txt):
+        #         im = Image.fromarray(image.data.mul_(127.5).add_(127.5).byte().permute(1, 2, 0).cpu().numpy())
+        #         im.save('results/{0}/{1}.jpg'.format(self.save_path, t.replace("/", "").replace("\n","")[:100]))
+        #         print(t)
 
+class Tester(object):
+    def __init__(self, type, dataset, save_path, pre_trained_gen, pre_trained_disc):
+        with open('config.yaml', 'r') as f:
+            config = yaml.load(f)
 
+        self.generator = torch.nn.DataParallel(gan_factory.generator_factory(type).cuda())
+        self.discriminator = torch.nn.DataParallel(gan_factory.discriminator_factory(type).cuda())
 
+        if pre_trained_disc:
+            self.discriminator.load_state_dict(torch.load(pre_trained_disc))
+        else:
+            self.discriminator.apply(Utils.weights_init)
 
+        if pre_trained_gen:
+            self.generator.load_state_dict(torch.load(pre_trained_gen))
+        else:
+            self.generator.apply(Utils.weights_init)
 
+        if dataset == 'birds':
+            self.model = torch.load(config["birds_model_path"])
+        elif dataset == 'flowers':
+            self.model = torch.load(config["flowers_model_path"])
+        else:
+            print('Dataset not supported, please select either birds or flowers.')
+            exit()
+
+        self.checkpoints_path = 'checkpoints'
+        self.save_path = save_path
+
+    def predict(self, txt=None):
+        if txt==None:
+            txt = ["the blue flower has a yellow center","the yellow flower has a blue pistil", "the red flower has pink pistil and long petals"]
+        size = len(txt)
+        if not os.path.exists('results/{0}'.format(self.save_path)):
+            os.makedirs('results/{0}'.format(self.save_path))
+
+        right_embed = torch.from_numpy(self.model.encode(txt, tokenize=True))
+        right_embed = Variable(right_embed).cuda()
+        noise = Variable(torch.randn(size, 100)).cuda()
+        noise = noise.view(noise.size(0), 100, 1, 1)
+        fake_images = self.generator(right_embed, noise)
+        #self.logger.draw(right_images, fake_images)
+
+        for image, t in zip(fake_images, txt):
+            im = Image.fromarray(image.data.mul_(127.5).add_(127.5).byte().permute(1, 2, 0).cpu().numpy())
+            im.save('results/{0}/{1}.jpg'.format(self.save_path, t.replace("/", "").replace("\n","")[:100]))
+            print(t)
