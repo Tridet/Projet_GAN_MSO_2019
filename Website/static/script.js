@@ -30,7 +30,7 @@ function generate_image() {
         p.id = 'resultDescription'
         document.getElementById('result').appendChild(p)
     } else {
-        document.getElementById('resultImg').src = "/generate?description=" + description + "&model=" + model
+        document.getElementById('resultImg').src = "/generate?description=" + description + "&model=" + model + "&object=" + object
         document.getElementById('resultDescription').innerHTML = description
     }
 
