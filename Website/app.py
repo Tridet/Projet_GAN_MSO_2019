@@ -13,7 +13,8 @@ def generate():
     if request.method == 'GET':
         description = request.args.get('description')
         model = request.args.get('model')
-        print(f'Generate image for : {description} with {model}')
+        object_type = request.args.get('object')
+        print(f'Generate a {object_type} for : {description} with {model}')
         pil_img = Image.new('RGB', (32,32), (0,255,255))
         return serve_pil_image(pil_img)
     

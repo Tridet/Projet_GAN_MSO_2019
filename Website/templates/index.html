@@ -19,20 +19,33 @@
 	</div>
 
 	<div class="container">
+		<span>Type of object: </span>
 		<div class="radio">
-			<input id="1" type="radio" name="model-choice" value="GAN" checked>
-			<label for="1">GAN</label>
+			<input id="object1" type="radio" name="object-choice" value="flowers" checked>
+			<label for="object1">Flowers</label>
 		</div>
 		<div class="radio">
-			<input id="2" type="radio" name="model-choice" value="GAN-CLS" >
-			<label for="2">GAN-CLS</label>
+			<input id="object2" type="radio" name="object-choice" value="birds" >
+			<label for="object2">Birds</label>
 		</div>
 	</div>
 
-
+	<div class="container">
+		<span>Type of model: </span>
+		<div class="radio">
+			<input id="model1" type="radio" name="model-choice" value="GAN" checked>
+			<label for="model1">GAN</label>
+		</div>
+		<div class="radio">
+			<input id="model2" type="radio" name="model-choice" value="GAN-CLS" >
+			<label for="model2">GAN-CLS</label>
+		</div>
+	</div>
 
 	<button class="search-button" onclick="generate_image()" type="button">Generate</button>
 	<div id='result'></div>
+
+
 	<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 

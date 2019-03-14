@@ -2,17 +2,26 @@
 function generate_image() {
     var description = document.getElementById('description').value
     var model = ''
-    var radios = document.getElementsByName('model-choice')
-    for (var i = 0, length = radios.length; i < length; i++) {
-        if (radios[i].checked) {
-            model = radios[i].value
+    var model_radios = document.getElementsByName('model-choice')
+    for (var i = 0, length = model_radios.length; i < length; i++) {
+        if (model_radios[i].checked) {
+            model = model_radios[i].value
+            break
+        }
+    }
+
+    var object = ''
+    var object_radios = document.getElementsByName('object-choice')
+    for (var i = 0, length = object_radios.length; i < length; i++) {
+        if (object_radios[i].checked) {
+            object = object_radios[i].value
             break
         }
     }
 
     if (document.getElementById('result').childElementCount === 0) {
         var img = document.createElement("img")
-        img.src = "/generate?description=" + description + "&model=" + model
+        img.src = "/generate?description=" + description + "&model=" + model + "&object=" + object
         img.id = 'resultImg'
         document.getElementById('result').appendChild(img)
 
