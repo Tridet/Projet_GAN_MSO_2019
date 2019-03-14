@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GAN</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+
+<body>
+	<div class="header">
+		<!-- <img src="{{ url_for('static', filename='logo.svg') }}" class="logo"> -->
+		Generative Adversarial Text to Image Synthesis
+	</div>
+	<div class="input container">
+		<input type="text" placeholder="Write a description" id="description" />
+	</div>
+
+	<div class="container">
+		<div class="radio">
+			<input id="1" type="radio" name="model-choice" value="GAN" checked>
+			<label for="1">GAN</label>
+		</div>
+		<div class="radio">
+			<input id="2" type="radio" name="model-choice" value="GAN-CLS" >
+			<label for="2">GAN-CLS</label>
+		</div>
+	</div>
+
+
+
+	<button class="search-button" onclick="generate_image()" type="button">Generate</button>
+	<div id='result'></div>
+	<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
