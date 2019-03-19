@@ -45,7 +45,11 @@ class Tester(object):
             txt = ["the blue flower has a yellow center","the flower is completely red"]
         if len(txt)==1:
             txt.append("flower")
-        lines = open('rando.txt').read().splitlines()
+            
+        if self.dataset=="flowers":
+            lines = open('rando.txt').read().splitlines()
+        else :
+            lines = open('rando_birds.txt').read().splitlines()
 
         for k in range(10):
             txt[1]=random.choice(lines)

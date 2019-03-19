@@ -26,7 +26,10 @@ class Tester(object):
         if txt==None:
             txt = ["the blue flower has a yellow center","the yellow flower has a blue pistil", "the red flower has pink pistil and long petals"]
         size = len(txt)
-        lines = open('rando.txt').read().splitlines()
+        if self.dataset=="flowers":
+            lines = open('rando.txt').read().splitlines()
+        else :
+            lines = open('rando_birds.txt').read().splitlines()
         txt[0]=random.choice(lines)
 
         right_embed = torch.from_numpy(self.model.encode(txt, tokenize=True))
