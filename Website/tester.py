@@ -4,6 +4,7 @@ from torch.autograd import Variable
 from models.gan_factory import gan_factory
 from PIL import Image
 
+import random
 import os
 
 class Tester(object):
@@ -25,6 +26,8 @@ class Tester(object):
         if txt==None:
             txt = ["the blue flower has a yellow center","the yellow flower has a blue pistil", "the red flower has pink pistil and long petals"]
         size = len(txt)
+        lines = open('rando.txt').read().splitlines()
+        txt[0]=random.choice(lines)
 
         right_embed = torch.from_numpy(self.model.encode(txt, tokenize=True))
         right_embed = Variable(right_embed)
