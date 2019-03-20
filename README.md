@@ -10,7 +10,7 @@ Lien vers les discriminateurs et générateurs pré-entrainés [flowers](https:/
 
 ## Datasets
 
-Pour reproduire les résultats obtenus, vous pouvez télécharger les datasets [Caltech-UCSD Birds 200](http://www.vision.caltech.edu/visipedia/CUB-200.html) et [Flowers](http://www.robots.ox.ac.uk/~vgg/data/flowers/102/) qui contiennent les images, leurs légendes et les embeddings correspondants. Cependant, nous utiliserons les embeddings que nous avons conçu grâce à Infersent.
+Pour reproduire les résultats obtenus, vous pouvez télécharger les datasets [Caltech-UCSD Birds 200](http://www.vision.caltech.edu/visipedia/CUB-200.html) et [Flowers](http://www.robots.ox.ac.uk/~vgg/data/flowers/102/) qui contiennent les images, leurs légendes et les embeddings correspondants. Cependant, nous utiliserons les embeddings que nous avons conçu grâce à Infersent, et qui sont disponibles ici : [flowers_infersent](https://drive.google.com/open?id=1QNo5hqzWQhJOB2zjl0xyLgDHshL_iLl5) et [birds_infersent](https://drive.google.com/open?id=1f_eXTUqlYSI7MurSIFhunzsRES3Pu6Ph)
 
 ### Embeddings
 
