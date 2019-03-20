@@ -19,19 +19,25 @@ function generate_image() {
         }
     }
 
-    if (document.getElementById('result').childElementCount === 0) {
-        var img = document.createElement("img")
-        img.src = "/generate?description=" + description + "&model=" + model + "&object=" + object
-        img.id = 'resultImg'
-        document.getElementById('result').appendChild(img)
+    var img;
+    var p;
 
-        var p = document.createElement("p")
+    if (document.getElementById('result').childElementCount === 0) {
+        for(let i = 0; i < 10 ; i++){
+            img = document.createElement("img")
+            img.src = "/generate?description=" + description + "&model=" + model + "&object=" + object + "&i=" + i +  "&time=" + new Date().getTime()
+            img.id = 'resultImg' + i
+            document.getElementById('result').appendChild(img)
+        }
+        p = document.createElement("p")
         p.innerHTML = description
         p.id = 'resultDescription'
-        document.getElementById('result').appendChild(p)
+        document.getElementById('description-container').appendChild(p)
     } else {
-        document.getElementById('resultImg').src = "/generate?description=" + description + "&model=" + model + "&object=" + object
-        document.getElementById('resultDescription').innerHTML = description
+        for(let i = 0; i < 10 ; i++){
+            document.getElementById('resultImg' + i).src = "/generate?description=" + description + "&model=" + model + "&object=" + object + "&i=" + i + "&time" + new Date().getTime()
+            document.getElementById('resultDescription').innerHTML = description
+        }
     }
 
 }

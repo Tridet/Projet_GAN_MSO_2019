@@ -11,7 +11,7 @@ class Tester(object):
     def __init__(self, type, dataset, pre_trained_gen):
         self.generator = torch.nn.DataParallel(gan_factory.generator_factory(type))
         self.generator.load_state_dict(torch.load(pre_trained_gen, map_location='cpu'))
-
+        self.dataset = dataset
 
         if dataset == 'birds':
             self.model = torch.load('data/model_birds.t7', map_location='cpu')
@@ -23,13 +23,16 @@ class Tester(object):
         
 
     def predict(self, txt=None):
-        if txt==None:
+        if txt == None:
             txt = ["the blue flower has a yellow center","the yellow flower has a blue pistil", "the red flower has pink pistil and long petals"]
         size = len(txt)
-        if self.dataset=="flowers":
-            lines = open('rando.txt').read().splitlines()
+        if self.dataset == "flowers":
+            with open('random_flowers.txt') as f:
+                lines = f.read().splitlines()
         else :
-            lines = open('rando_birds.txt').read().splitlines()
+            with open('random_birds.txt') as f:
+                lines = f.read().splitlines()
+        
         txt[0]=random.choice(lines)
 
         right_embed = torch.from_numpy(self.model.encode(txt, tokenize=True))

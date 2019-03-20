@@ -83,7 +83,7 @@ button:active{
 
 #result {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center; /* align horizontal */
     align-items: center;
     margin: 15px;
@@ -95,6 +95,13 @@ button:active{
 
 #resultDescription {
     text-decoration-line: underline;
+}
+
+#description-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* align horizontal */
+    align-items: center;
 }
 
 
