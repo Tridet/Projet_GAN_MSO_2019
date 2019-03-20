@@ -9,6 +9,7 @@ import os
 
 class Tester(object):
     def __init__(self, type, dataset, pre_trained_gen):
+        type = 'gan' # Override type (We only use 'gan')
         self.generator = torch.nn.DataParallel(gan_factory.generator_factory(type))
         self.generator.load_state_dict(torch.load(pre_trained_gen, map_location='cpu'))
         self.dataset = dataset
