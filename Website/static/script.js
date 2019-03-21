@@ -1,34 +1,11 @@
 
-function generate_image() {
+function generateImage() {
     var description = document.getElementById('description').value
     document.getElementById('resultDescription').innerHTML = description
 
-    var model = 'gan'
-    var model_radios = document.getElementsByName('model-choice')
-    for (let i = 0, length = model_radios.length; i < length; i++) {
-        if (model_radios[i].checked) {
-            model = model_radios[i].value
-            break
-        }
-    }
-
-    var object = 'flowers'
-    var object_radios = document.getElementsByName('object-choice')
-    for (let i = 0, length = object_radios.length; i < length; i++) {
-        if (object_radios[i].checked) {
-            object = object_radios[i].value
-            break
-        }
-    }
-
-    var clsOption = 'false'
-    var cls_radios = document.getElementsByName('cls-choice')
-    for (let i = 0, length = cls_radios.length; i < length; i++) {
-        if (cls_radios[i].checked) {
-            clsOption = cls_radios[i].value
-            break
-        }
-    }
+    var model = getModel()
+    var object = getObject()
+    var clsOption = getClsOption()
 
     // Init results with empty images
     if (document.getElementById('result').childElementCount === 0) {
@@ -63,6 +40,49 @@ input.addEventListener('keyup', function (event) {
         generate_image();
     }
 });
+
+function getModel(){
+    return getRadioValue('model-choice', 'gan')
+}
+
+function getObject(){
+    return getRadioValue('object-choice', 'flowers')
+}
+
+function getClsOption(){
+    return getRadioValue('cls-choice', 'false')
+}
+
+function getRadioValue(radioName, default_value){
+    var res = default_value
+    var radios = document.getElementsByName(radioName)
+    for (let i = 0, length = radios.length; i < length; i++) {
+        if (radios[i].checked) {
+            res = radios[i].value
+            break
+        }
+    }
+    return res
+}
+
+function getRandomDescription(){
+    let object = getObject()
+    let url = '/random-description?object=' + object
+    httpGetAsync(url, (description) => {
+        document.getElementById('description').value = description
+    })
+}
+
+function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
 
 
 

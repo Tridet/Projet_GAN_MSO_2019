@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>GAN</title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 
@@ -14,9 +15,11 @@
 		<!-- <img src="{{ url_for('static', filename='logo.svg') }}" class="logo"> -->
 		Generative Adversarial Text to Image Synthesis
 	</div>
-	<div class="input container">
-		<input type="text" placeholder="Write a description" id="description" />
+	<div class="container">
+		<input class="input" type="text" placeholder="Write a description" id="description" />
+		<button onclick="getRandomDescription();" type="button">Random description</button>
 	</div>
+	
 
 	<div class="container">
 		<span>Type of object: </span>
@@ -54,7 +57,7 @@
 		</div>
 	</div>
 
-	<button class="search-button" onclick="generate_image()" type="button">Generate</button>
+	<button class="search-button" onclick="generateImage()" type="button">Generate</button>
 	<div id='result'></div>
 	<div id='description-container'>
 		<p id="resultDescription"></p>

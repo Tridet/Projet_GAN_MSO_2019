@@ -40,7 +40,8 @@ body {
 }
 
 .input {
-    border-bottom: 2px solid var(--secondary-color-dark);
+    border-bottom: 2px solid var(--secondary-color-dark) !important;
+    margin-right: 1em;
 }
 
 input[type="text"] {
@@ -69,8 +70,7 @@ button:active{
     background-color: var(--primary-color);
 }
 
-.search-button {
-    margin: 5px 10%;
+button {
     padding: 0.3em;
     border: 2px solid var(--secondary-color-dark);
     background-color: var(--primary-color-light);
@@ -79,6 +79,10 @@ button:active{
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     width: 10em;
+}
+
+.search-button{
+    margin: 5px 10%;
 }
 
 img {
