@@ -16,8 +16,6 @@ html, body {
 }
 
 body {
-    display: flex;
-    flex-direction: column;
     background-color: var(--primary-color-light);
 }
 
