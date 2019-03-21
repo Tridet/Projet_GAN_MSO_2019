@@ -59,7 +59,9 @@ Pour tester le modèle, il faut :
 Un site web  (mode local) permet de générer des images avec les modèles pré-entraînés fournis plus haut à partir de vos propres descriptions. Consultez le dossier `Website`pour en savoir plus.
 
 <div>
-<img src="website.jpg" width="80%" height="80%">
+  <p align="center">
+    <img src="website.jpg" width="100%" height="100%">
+  </p>
 </div>
 
 ### Remerciements
