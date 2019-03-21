@@ -8,13 +8,19 @@
 
 
 <div>
-<img src="colors.jpg">
+	<p align="center">
+		<img src="colors.jpg" width="60%" height="60%">
+	</p>
 </div>
 
 <div>
-<img src="bodyparts.jpg">
+	<p align="center">
+		<img src="bodyparts.jpg" width="60%" height="60%">
+	</p>
 </div>
 
 <div>
-<img src="adjectives.jpg">
+	<p align="center">
+		<img src="adjectives.jpg" width="60%" height="60%">
+	</p>
 </div>
