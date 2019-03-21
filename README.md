@@ -54,5 +54,13 @@ Pour tester le modèle, il faut :
 * les images générées vont apparaître dans le dossier indiqué par `--save_path`
 
 
+### Website
+
+Un site web  (mode local) permet de générer des images avec les modèles pré-entraînés fournis plus haut à partir de vos propres descriptions. Consultez le dossier `Website`pour en savoir plus.
+
+<div>
+<img src="website.jpg" width="80%" height="80%">
+</div>
+
 ### Remerciements
 Merci à M. Liming Chen d'avoir été notre tuteur pour ce projet, ainsi qu'à Daniel Muller et à Mohsen Ardabilian pour leurs critiques constructives.
