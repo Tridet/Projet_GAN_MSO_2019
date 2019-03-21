@@ -49,6 +49,7 @@ input[type="text"] {
     padding: 0.3em;
     border: none;
     font-size: 16px;
+    font-family: Monaco, Andale Mono, monospace;
     background-color: var(--primary-color-light);
 }
 
@@ -80,7 +81,10 @@ button {
 }
 
 img {
+    width: 64px;
+    height: 64px;
     margin: 5px;
+    background: url(loading.gif) 50% no-repeat;
 }
 
 .grid {
@@ -113,10 +117,6 @@ img {
     justify-content: center; /* align horizontal */
     align-items: center;
     margin: 15px;
-}
-
-#resultImg {
-    width: 40%;
 }
 
 #resultDescription {
