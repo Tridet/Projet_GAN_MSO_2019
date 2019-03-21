@@ -37,14 +37,28 @@
 			<label for="model1">GAN</label>
 		</div>
 		<div class="radio">
-			<input id="model2" type="radio" name="model-choice" value="gan_cls" >
-			<label for="model2">GAN-CLS</label>
+			<input id="model2" type="radio" name="model-choice" value="wgan" >
+			<label for="model2">WGAN</label>
+		</div>
+	</div>
+
+	<div class="container">
+		<span>CLS option: </span>
+		<div class="radio">
+			<input id="cls-true" type="radio" name="cls-choice" value="true" checked>
+			<label for="cls-true">Enabled</label>
+		</div>
+		<div class="radio">
+			<input id="cls-false" type="radio" name="cls-choice" value="false" >
+			<label for="cls-false">Disabled</label>
 		</div>
 	</div>
 
 	<button class="search-button" onclick="generate_image()" type="button">Generate</button>
 	<div id='result'></div>
-	<div id='description-container'></div>
+	<div id='description-container'>
+		<p id="resultDescription"></p>
+	</div>
 
 
 

@@ -13,13 +13,20 @@ def index():
 def generate():
     if request.method == 'GET':
         description = request.args.get('description')
-        model_type = request.args.get('model')
-        object_type = request.args.get('object')
-        print(f'Generate a {object_type} for : {description} with {model_type}')
+        model_type = request.args.get('model') # gan or wgan
+        model_type = model_type if model_type in ['gan', 'wgan'] else 'gan'
 
-        tester = Tester(type=model_type,
-                    dataset=object_type,
-                    pre_trained_gen=f'data/gen_{model_type}_{object_type}.pth')
+        object_type = request.args.get('object') # birds or flowers
+        object_type = object_type if object_type in ['birds', 'flowers'] else 'flowers'
+
+        cls_option = request.args.get('cls') # true or false
+        cls_option = False if cls_option == 'false' else True
+
+        tester = Tester(
+            type=model_type,
+            dataset=object_type,
+            cls_option=cls_option
+            )
         pil_img = tester.predict(txt=[description]*2) # Problem of batchNorm if size 1
         return serve_pil_image(pil_img)
     

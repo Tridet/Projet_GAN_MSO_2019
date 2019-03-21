@@ -1,0 +1,16 @@
+# GAN Pre-trained models
+birds_gan_path: 'data/gen_gan_birds.pth'
+birds_gan_cls_path: 'data/gen_gan_cls_birds.pth'
+
+flowers_gan_path: 'data/gen_gan_flowers.pth'
+flowers_gan_cls_path: 'data/gen_gan_cls_flowers.pth'
+
+# Embeddings models
+flowers_embeddings_model_path: 'data/model_flowers.t7'
+birds_embeddings_model_path: 'data/model_birds.t7'
+
+# Random descriptions
+flowers_random_descriptions_path: 'data/random_flowers.txt'
+birds_random_descriptions_path: 'data/random_birds.txt'
+
+

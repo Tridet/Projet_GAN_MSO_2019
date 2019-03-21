@@ -1,49 +1,58 @@
 
 function generate_image() {
     var description = document.getElementById('description').value
-    var model = ''
+    document.getElementById('resultDescription').innerHTML = description
+
+    var model = 'gan'
     var model_radios = document.getElementsByName('model-choice')
-    for (var i = 0, length = model_radios.length; i < length; i++) {
+    for (let i = 0, length = model_radios.length; i < length; i++) {
         if (model_radios[i].checked) {
             model = model_radios[i].value
             break
         }
     }
 
-    var object = ''
+    var object = 'flowers'
     var object_radios = document.getElementsByName('object-choice')
-    for (var i = 0, length = object_radios.length; i < length; i++) {
+    for (let i = 0, length = object_radios.length; i < length; i++) {
         if (object_radios[i].checked) {
             object = object_radios[i].value
             break
         }
     }
 
-    var img;
-    var p;
-
-    if (document.getElementById('result').childElementCount === 0) {
-        for(let i = 0; i < 10 ; i++){
-            img = document.createElement("img")
-            img.src = "/generate?description=" + description + "&model=" + model + "&object=" + object + "&i=" + i +  "&time=" + new Date().getTime()
-            img.id = 'resultImg' + i
-            document.getElementById('result').appendChild(img)
-        }
-        p = document.createElement("p")
-        p.innerHTML = description
-        p.id = 'resultDescription'
-        document.getElementById('description-container').appendChild(p)
-    } else {
-        for(let i = 0; i < 10 ; i++){
-            document.getElementById('resultImg' + i).src = "/generate?description=" + description + "&model=" + model + "&object=" + object + "&i=" + i + "&time" + new Date().getTime()
-            document.getElementById('resultDescription').innerHTML = description
+    var clsOption = 'false'
+    var cls_radios = document.getElementsByName('cls-choice')
+    for (let i = 0, length = cls_radios.length; i < length; i++) {
+        if (cls_radios[i].checked) {
+            clsOption = cls_radios[i].value
+            break
         }
     }
 
+    // Init results with empty images
+    if (document.getElementById('result').childElementCount === 0) {
+        // Create img empty elements
+        for(let i = 0; i < 10 ; i++){
+            let img = document.createElement("img")
+            img.id = 'resultImg' + i
+            document.getElementById('result').appendChild(img)
+        }
+    }
+    // Write new src for each image
+    for(let i = 0; i < 10 ; i++){
+        let img = document.getElementById('resultImg' + i)
+        img.src = "/generate?description=" + description +
+                    "&model=" + model +
+                    "&object=" + object +
+                    "&cls=" + clsOption +
+                    "&i=" + i + // Used to get different images (avoid cache)
+                    "&time=" + new Date().getTime() // This is used as a cache breaker
+    }
 }
 
-var input = document.getElementById('description');
 
+var input = document.getElementById('description');
 // Execute a function when the user releases a key on the keyboard
 input.addEventListener('keyup', function (event) {
     // Number 13 is the "Enter" key on the keyboard

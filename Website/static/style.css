@@ -81,6 +81,10 @@ button:active{
     width: 10em;
 }
 
+img {
+    margin: 5px;
+}
+
 #result {
     display: flex;
     flex-direction: row;
