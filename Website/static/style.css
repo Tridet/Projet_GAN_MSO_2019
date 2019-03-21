@@ -11,8 +11,8 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-family: Monaco, Andale Mono, monospace;
+    font-size: 16px;
 }
 
 body {
@@ -30,13 +30,13 @@ body {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     font-variant: small-caps;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .container {
     display:flex;
     flex-direction:row;
     margin: 5px 10%;
-    
 }
 
 .input {
@@ -49,16 +49,11 @@ input[type="text"] {
     padding: 0.3em;
     border: none;
     font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
     background-color: var(--primary-color-light);
 }
 
 input:focus{
     outline: none;
-}
-
-.radio {
-    margin-right: 1em;
 }
 
 button:focus{
@@ -76,7 +71,6 @@ button {
     background-color: var(--primary-color-light);
     border-radius: 0px;
     font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     width: 10em;
 }
@@ -89,9 +83,33 @@ img {
     margin: 5px;
 }
 
+.grid {
+    display: grid;
+    grid-auto-columns: max-content;
+}
+
+.col-1 {
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+.col-2 {
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+.col-3 {
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
 #result {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
     justify-content: center; /* align horizontal */
     align-items: center;
     margin: 15px;

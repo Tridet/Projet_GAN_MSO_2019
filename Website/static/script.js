@@ -7,17 +7,18 @@ function generateImage() {
     var object = getObject()
     var clsOption = getClsOption()
 
+    var imageCount = 12
     // Init results with empty images
     if (document.getElementById('result').childElementCount === 0) {
         // Create img empty elements
-        for(let i = 0; i < 10 ; i++){
+        for(let i = 0; i < imageCount ; i++){
             let img = document.createElement("img")
             img.id = 'resultImg' + i
             document.getElementById('result').appendChild(img)
         }
     }
     // Write new src for each image
-    for(let i = 0; i < 10 ; i++){
+    for(let i = 0; i < imageCount ; i++){
         let img = document.getElementById('resultImg' + i)
         img.src = "/generate?description=" + description +
                     "&model=" + model +

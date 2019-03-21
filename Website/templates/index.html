@@ -19,42 +19,40 @@
 		<input class="input" type="text" placeholder="Write a description" id="description" />
 		<button onclick="getRandomDescription();" type="button">Random description</button>
 	</div>
-	
 
-	<div class="container">
-		<span>Type of object: </span>
-		<div class="radio">
+
+	<div class="grid container">
+
+		<span class="col-1">Type of object: </span>
+		<div class="radio col-2">
 			<input id="object1" type="radio" name="object-choice" value="flowers" checked>
 			<label for="object1">Flowers</label>
 		</div>
-		<div class="radio">
-			<input id="object2" type="radio" name="object-choice" value="birds" >
+		<div class="radio col-3">
+			<input id="object2" type="radio" name="object-choice" value="birds">
 			<label for="object2">Birds</label>
 		</div>
-	</div>
 
-	<div class="container">
-		<span>Type of model: </span>
-		<div class="radio">
+		<span class="col-1">Type of model: </span>
+		<div class="radio col-2">
 			<input id="model1" type="radio" name="model-choice" value="gan" checked>
 			<label for="model1">GAN</label>
 		</div>
-		<div class="radio">
-			<input id="model2" type="radio" name="model-choice" value="wgan" >
+		<div class="radio col-3">
+			<input id="model2" type="radio" name="model-choice" value="wgan">
 			<label for="model2">WGAN</label>
 		</div>
-	</div>
 
-	<div class="container">
-		<span>CLS option: </span>
-		<div class="radio">
+		<span class="col-1">CLS option: </span>
+		<div class="radio col-2">
 			<input id="cls-true" type="radio" name="cls-choice" value="true" checked>
 			<label for="cls-true">Enabled</label>
 		</div>
-		<div class="radio">
-			<input id="cls-false" type="radio" name="cls-choice" value="false" >
+		<div class="radio col-3">
+			<input id="cls-false" type="radio" name="cls-choice" value="false">
 			<label for="cls-false">Disabled</label>
 		</div>
+
 	</div>
 
 	<button class="search-button" onclick="generateImage()" type="button">Generate</button>
