@@ -170,7 +170,7 @@ class Trainer(object):
             self.logger.plot_epoch(gen_iteration)
 
             if (epoch+1) % 50 == 0:
-                Utils.save_checkpoint(self.discriminator, self.generator, self.checkpoints_path, epoch)
+                Utils.save_checkpoint(self.discriminator, self.generator, self.checkpoints_path, self.save_path, epoch)
 
     def _train_gan(self, cls):
         criterion = nn.BCELoss()
@@ -342,7 +342,7 @@ class Trainer(object):
          self.logger.plot_epoch(gen_iteration)
 
          if (epoch + 1) % 50 == 0:
-             Utils.save_checkpoint(self.discriminator, self.generator, self.checkpoints_path, epoch)
+             Utils.save_checkpoint(self.discriminator, self.generator, self.checkpoints_path, self.save_path, epoch)
 
     def _train_vanilla_gan(self):
         criterion = nn.BCELoss()
@@ -420,7 +420,7 @@ class Trainer(object):
             self.logger.plot_epoch_w_scores(iteration)
 
             if (epoch) % 50 == 0:
-                Utils.save_checkpoint(self.discriminator, self.generator, self.checkpoints_path, epoch)
+                Utils.save_checkpoint(self.discriminator, self.generator, self.checkpoints_path, self.save_path, epoch)
 
     def predict(self):
         txt = ["the blue flower has a yellow center","the yellow flower has a blue pistil", "the red flower has pink pistil and long petals"]
