@@ -5,6 +5,13 @@ birds_gan_cls_path: 'data/gen_gan_cls_birds.pth'
 flowers_gan_path: 'data/gen_gan_flowers.pth'
 flowers_gan_cls_path: 'data/gen_gan_cls_flowers.pth'
 
+# WGAN Pre-trained models
+birds_wgan_path: 'data/gen_wgan_birds.pth'
+birds_wgan_cls_path: 'data/gen_wgan_cls_birds.pth'
+
+flowers_wgan_path: 'data/gen_wgan_flowers.pth'
+flowers_wgan_cls_path: 'data/gen_wgan_cls_flowers.pth'
+
 # Embeddings models
 flowers_embeddings_model_path: 'data/model_flowers.t7'
 birds_embeddings_model_path: 'data/model_birds.t7'
