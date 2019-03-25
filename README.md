@@ -63,19 +63,19 @@ Pour ce projet nous n'avons pas utilisé de fonctions mathématiques à propreme
 
 <div>
   <p align="center">
-    <img src="images/examples1.jpg" width="80%" height="80%">
+    <img src="images/example1.jpg" width="60%" height="60%">
   </p>
 </div>
 
 <div>
   <p align="center">
-    <img src="images/examples2.jpg" width="80%" height="80%">
+    <img src="images/example2.jpg" width="60%" height="60%">
   </p>
 </div>
 
 <div>
   <p align="center">
-    <img src="images/examples3.jpg" width="80%" height="80%">
+    <img src="images/example3.jpg" width="60%" height="60%">
   </p>
 </div>
 
@@ -85,7 +85,7 @@ Il est également possible de procéder à une interpolation des embeddings et d
 
 <div>
   <p align="center">
-    <img src="images/interpolate.jpg" width="100%" height="100%">
+    <img src="images/interpolate.jpg" width="80%" height="80%">
   </p>
 </div>
 
