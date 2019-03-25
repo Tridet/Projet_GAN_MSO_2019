@@ -41,7 +41,7 @@ Pour entrainer le modèle, il faut :
   * `--num_workers, default=0` changer la valeur si on utilise le multiprocessing.
   * `--epochs, default=200` c'est la valeur recommandée.
   * vous n'avez pas besoin de modifier les autres valeurs.
-* lancer `visdom` et ouvrir son navigateur à l'adresse indiquée pour voir l'évolution du modèle en temps réel.
+* lancer `visdom` et ouvrir son navigateur à l'adresse indiquée pour voir l'évolution du modèle en temps réel (génération d'images par batch et tracés des fonctions de perte du générateur et du discriminateur).
 * lancer `python runtime.py`
 * les checkpoints vont apparaitre dans le dossier `checkpoints` toutes les 10 epochs.
 
@@ -57,14 +57,46 @@ Pour tester le modèle, il faut :
 * lancer `python runtime.py` (pas besoin de `visdom`)
 * les images générées vont apparaître dans le dossier indiqué par `--save_path`
 
+### Evaluation
 
-### Website
-
-Un site web  (mode local) permet de générer des images avec les modèles pré-entraînés fournis plus haut à partir de vos propres descriptions. Consultez le dossier `Website`pour en savoir plus.
+Pour ce projet nous n'avons pas utilisé de fonctions mathématiques à proprement parler pour l'évaluation du modèle. L'utilisation de métriques d'évaluation adéquates pour les GANs étant un sujet actif de recherche nous avons préféré évaluer notre modèle de façon plus simpliste à l'aide de la compréhension du texte que le générateur est censé respecter. Sur les images suivantes de fleurs on peut voir que le vocabulaire en question est bien compris. White vs Yellow vs Purple, Big vs Large vs Thin, etc. Les meilleurs résultats sont obtenus pour les fleurs qui possèdent une distribution à apprendre moins complexe que les oiseaux par exemple. Les résultats obtenus peuvent être testés sur le site web fourni.
 
 <div>
   <p align="center">
-    <img src="website.jpg" width="100%" height="100%">
+    <img src="images/examples1.jpg" width="80%" height="80%">
+  </p>
+</div>
+
+<div>
+  <p align="center">
+    <img src="images/examples2.jpg" width="80%" height="80%">
+  </p>
+</div>
+
+<div>
+  <p align="center">
+    <img src="images/examples3.jpg" width="80%" height="80%">
+  </p>
+</div>
+
+### Interpolation
+
+Il est également possible de procéder à une interpolation des embeddings et de générer les images associées. Ci-dessous un exemple des résultats obtenus.
+
+<div>
+  <p align="center">
+    <img src="images/interpolate.jpg" width="100%" height="100%">
+  </p>
+</div>
+
+
+### Website
+
+Un site web (mode local) permet de générer des images avec les modèles pré-entraînés fournis plus haut à partir de vos propres descriptions. Consultez le dossier `Website`pour en savoir plus.
+
+<div>
+  <p align="center">
+    <img src="images/website.jpg" width="100%" height="100%">
   </p>
 </div>
 
