@@ -50,5 +50,5 @@ else:
                     pre_trained_disc=args.pre_trained_disc,
                     pre_trained_gen=args.pre_trained_gen
                     )
-    tester.predict(txt=["the medium sized bird has a dark grey color", "the bird has green feathers and a dark tail"])
+    tester.predict(txt=["the white flower has a big yellow center"])
 
