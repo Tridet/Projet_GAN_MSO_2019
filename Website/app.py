@@ -52,10 +52,13 @@ def get_interpolated_embeddings():
     object_type = request.args.get('object') # birds or flowers
     object_type = object_type if object_type in ['birds', 'flowers'] else 'flowers'
 
+    cls_option = request.args.get('cls') # true or false
+    cls_option = False if cls_option == 'false' else True
+
     tester = Tester(
             type='gan', # This option is useless here.
             dataset=object_type,
-            cls_option=False # This option is useless here.
+            cls_option=cls_option # This option is useless here.
             )
     embeddings = tester.get_interpolated_embeddings(description1, description2)
     res = jsonify(embeddings.tolist())
