@@ -6,7 +6,9 @@ Ce projet a pour point de départ l'article de Reed Scott [Generative Adversaria
 
 ## Pre-trained models
 
-Lien vers les discriminateurs et générateurs pré-entrainés [flowers](https://drive.google.com/open?id=1XtlZflv0Hz_Fjz3eKpPm3uHpscaH6Js9), [flowers_cls](https://drive.google.com/open?id=1kWhoLbw81IV6wzyq2yj9uzrVCWSb0-Id), [birds](https://drive.google.com/open?id=1GHaASXrzDqqyxiS8pMn_lw_ceVpQdlTb) et [birds_cls](https://drive.google.com/open?id=1RLsRETS2jIrLXzvTJaEMd4rUV8dR_mNu)
+Lien vers les discriminateurs et générateurs pré-entrainés pour les
+[fleurs](https://drive.google.com/drive/folders/1t7oe08tRkWAsX16PE_tcKIR1Bz2k_yF4?usp=sharing) et les
+[oiseaux](https://drive.google.com/drive/folders/1WzbQ0ePGMNLVXWVMSOmQ0pGPZEL3IEg0?usp=sharing).
 
 ## Datasets
 
