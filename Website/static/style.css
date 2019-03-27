@@ -120,13 +120,13 @@ img {
     margin: 15px;
 }
 
-#resultDescription {
+.resultDescription {
     text-decoration-line: underline;
 }
 
 #description-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center; /* align horizontal */
     align-items: center;
 }
