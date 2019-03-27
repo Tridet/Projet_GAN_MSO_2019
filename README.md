@@ -89,14 +89,33 @@ Il est également possible de procéder à une interpolation des embeddings et d
   </p>
 </div>
 
+Il est possible de reproduire les résultats d'interpolation à l'aide du site web fourni.
 
 ### Website
 
-Un site web (mode local) permet de générer des images avec les modèles pré-entraînés fournis plus haut à partir de vos propres descriptions. Consultez le dossier `Website`pour en savoir plus.
+Un site web (mode local) permet de générer des images avec les modèles pré-entraînés fournis plus haut à partir de vos propres descriptions. Ci-dessous, quelques exemples de générations possibles. Consultez le dossier `Website`pour en savoir plus sur son lancement en mode local.
 
 <div>
   <p align="center">
-    <img src="images/website.jpg" width="100%" height="100%">
+    <img src="images/website1.jpg" width="100%" height="100%">
+  </p>
+</div>
+
+<div>
+  <p align="center">
+    <img src="images/website2.jpg" width="100%" height="100%">
+  </p>
+</div>
+
+<div>
+  <p align="center">
+    <img src="images/website3.jpg" width="100%" height="100%">
+  </p>
+</div>
+
+<div>
+  <p align="center">
+    <img src="images/website4.jpg" width="100%" height="100%">
   </p>
 </div>
 
