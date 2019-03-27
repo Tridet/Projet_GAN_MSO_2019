@@ -14,7 +14,7 @@ parser.add_argument("--l2_coef", default=100, type=float)
 parser.add_argument("--diter", default=5, type=int)
 parser.add_argument("--cls", default=False, action='store_true')
 parser.add_argument("--vis_screen", default='gan')
-parser.add_argument("--save_path", default=time.strftime("%Y_%m_%H_%M_%S"))
+parser.add_argument("--save_path", default=time.strftime("%Y_%m_%d_%H_%M_%S"))
 parser.add_argument("--inference", default=True, action='store_true')
 parser.add_argument('--pre_trained_disc', default="C:/Users/Theo/Documents/GitHub/Text-to-Image-Synthesis/checkpoints/checkpoints_birds_infer_embed/disc_190.pth") #défaut : None
 parser.add_argument('--pre_trained_gen', default="C:/Users/Theo/Documents/GitHub/Text-to-Image-Synthesis/checkpoints/checkpoints_birds_infer_embed/gen_190.pth") #défaut : None
