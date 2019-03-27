@@ -63,19 +63,19 @@ Pour ce projet nous n'avons pas utilisé de fonctions mathématiques à propreme
 
 <div>
   <p align="center">
-    <img src="images/example1.jpg" width="60%" height="60%">
+    <img src="images/example1.jpg" width="80%" height="80%">
   </p>
 </div>
 
 <div>
   <p align="center">
-    <img src="images/example2.jpg" width="60%" height="60%">
+    <img src="images/example2.jpg" width="80%" height="80%">
   </p>
 </div>
 
 <div>
   <p align="center">
-    <img src="images/example3.jpg" width="60%" height="60%">
+    <img src="images/example3.jpg" width="80%" height="80%">
   </p>
 </div>
 
