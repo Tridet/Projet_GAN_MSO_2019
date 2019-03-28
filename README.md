@@ -1,4 +1,4 @@
-# Projet_GAN
+# Génération d'images à partir de texte
 
 Ce projet a pour point de départ l'article de Reed Scott [Generative Adversarial Text-to-Image Synthesis](https://arxiv.org/abs/1605.05396) et s'appuie sur l'implémentation qui en a été faite par [Alaa El-Nouby](https://github.com/aelnouby/Text-to-Image-Synthesis). L'originalité de notre travail consiste en deux points : 
 * l'implémentation d'une fonction de test qui n'était pas présente à la base chez Alaa El-Nouby ;
