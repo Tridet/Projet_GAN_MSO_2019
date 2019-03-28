@@ -121,5 +121,14 @@ Un site web (mode local) permet de générer des images avec les modèles pré-e
   </p>
 </div>
 
+### Authors
+
+* Antoine ABHAY
+* Paola de PERTHUIS
+* Pascal GODBILLOT
+* Théo LACOUR
+
 ### Remerciements
 Merci à M. Liming Chen d'avoir été notre tuteur pour ce projet, ainsi qu'à Daniel Muller et à Mohsen Ardabilian pour leurs critiques constructives.
+
+
