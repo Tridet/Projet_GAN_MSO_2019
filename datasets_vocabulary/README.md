@@ -1,10 +1,10 @@
 # Dataset Vocabulary
 
-* La fonction `vocabulary.py`permet de générer la totalité du vocabulaire présent dans les textes descriptifs liés aux images des datasets [Birds 200](http://www.vision.caltech.edu/visipedia/CUB-200.html}{Caltech-UCSD) et [Flowers](http://www.robots.ox.ac.uk/~vgg/data/flowers/102/). Les descriptions au format `.txt` sont disponibles au téléchargement sur le github de Reed Scoot dans le repository [cvpr2016](https://github.com/reedscot/cvpr2016).
+* The `vocabulary.py` function generates all the vocabulary present in the descriptive texts related to the images of the datasets[Birds 200](http://www.vision.caltech.edu/visipedia/CUB-200.html}{Caltech-UCSD) and[Flowers](http://www.robots.ox.ac.uk/~vgg/data/flowers/102/). Descriptions in `.txt` format are available for download on the Reed Scoot github in the repository[cvpr2016](https://github.com/reedscot/cvpr2016).
 
-* Cependant les datasets en question étant très lourds, les vocabulaires pour chaque dataset ainsi que le nombre d'occurence de chaque mot sont disponibles dans les fichiers `.json`
+* However, since the datasets in question are very heavy, the vocabularies for each dataset as well as the number of occurrences of each word are available in the `.json` files
 
-* La fonction `vocabulary.py` permet également de générer différents insights à partir de ces vocabulaires. Certains sont présentés dans les barplots ci-dessous.
+* The `vocabulary.py` function also allows you to generate different insights from these vocabularies. Some of them are presented in the barplots below.
 
 
 <div>

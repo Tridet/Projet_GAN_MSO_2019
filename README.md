@@ -1,67 +1,67 @@
-# Génération d'images à partir de texte
+# Generative Adversarial Text to Image Synthesis
 
-Ce projet a pour point de départ l'article de Reed Scott [Generative Adversarial Text-to-Image Synthesis](https://arxiv.org/abs/1605.05396) et s'appuie sur l'implémentation qui en a été faite par [Alaa El-Nouby](https://github.com/aelnouby/Text-to-Image-Synthesis). L'originalité de notre travail consiste en deux points : 
-* l'implémentation d'une fonction de test qui n'était pas présente à la base chez Alaa El-Nouby ;
-* la création d'embeddings basés sur [InferSent](https://github.com/facebookresearch/InferSent) qui constitue un modèle de langage différent de celui utilisé par Reed Scott.
+This project is based on Reed Scott's article [Generative Adversarial Text-to-Image Synthesis](https://arxiv.org/abs/1605.05396) and builds on its implementation by[Alaa El-Nouby](https://github.com/aelnouby/Text-to-Image-Synthesis). The originality of our work consists of two points: 
+* the implementation of a test function that was not present at the base at Alaa El-Nouby;
+* the creation of embeddings based on[InferSent](https://github.com/facebookresearch/InferSent) which is a different language model from the one used by Reed Scott.
+
+A report for this project is available [here](https://drive.google.com/open?id=1Z74FDeyRjbC6pnhI8lxJlq4QByM_K-kA)
 
 ## Pre-trained models
 
-Lien vers les discriminateurs et générateurs pré-entrainés pour les
-[fleurs](https://drive.google.com/drive/folders/1t7oe08tRkWAsX16PE_tcKIR1Bz2k_yF4?usp=sharing) et les
-[oiseaux](https://drive.google.com/drive/folders/1WzbQ0ePGMNLVXWVMSOmQ0pGPZEL3IEg0?usp=sharing).
+Link towards the pre-trained discriminators and generators for [flowers](https://drive.google.com/drive/folders/1t7oe08tRkWAsX16PE_tcKIR1Bz2k_yF4?usp=sharing) and [birds](https://drive.google.com/drive/folders/1WzbQ0ePGMNLVXWVMSOmQ0pGPZEL3IEg0?usp=sharing).
 
 ## Datasets
 
-Pour reproduire les résultats obtenus, vous pouvez télécharger les datasets [Caltech-UCSD Birds 200](http://www.vision.caltech.edu/visipedia/CUB-200.html) et [Flowers](http://www.robots.ox.ac.uk/~vgg/data/flowers/102/) qui contiennent les images, leurs légendes et les embeddings correspondants.
+To reproduce the results, you can download the datasets [Caltech-UCSD Birds 200](http://www.vision.caltech.edu/visipedia/CUB-200.html) and [Flowers](http://www.robots.ox.ac.uk/~vgg/data/flowers/102/) which contain the images, their captions and corresponding embeddings.
 
-Cependant, nous utiliserons les embeddings que nous avons conçu grâce à Infersent, et qui sont disponibles ici (fichiers au format h5):
+However, we will use the embeddings that we designed with Infersent, and that are available here (files in h5 format):
 * [flowers_infersent](https://drive.google.com/open?id=1QNo5hqzWQhJOB2zjl0xyLgDHshL_iLl5) ;
 * [birds_infersent](https://drive.google.com/open?id=1f_eXTUqlYSI7MurSIFhunzsRES3Pu6Ph)
 
 ### Embeddings
 
-Lien vers les modèles de langage, nécessaire pour faire soi-même les tests : [birds](https://drive.google.com/open?id=1VISSkPvNZebwAazCtDVbry2YadDjA2iy) et [flowers](https://drive.google.com/open?id=1EFsmlcL19rSXTdpJF7v71og6YOapkGUW).
+Link to the language models, necessary to do the tests yourself: [birds](https://drive.google.com/open?id=1VISSkPvNZebwAazCtDVbry2YadDjA2iy) and [flowers](https://drive.google.com/open?id=1EFsmlcL19rSXTdpJF7v71og6YOapkGUW).
 
-Si vous souhaitez les générer vous-même, les fichiers utilisés sont dans le dossier InferSent, et il faut se référer au [GitHub de Infersent](https://github.com/facebookresearch/InferSent) pour les faire fonctionner.
+If you want to generate them yourself, the files used are in the InferSent folder, and you must refer to the [Infersent GitHub](https://github.com/facebookresearch/InferSent) to make them work.
 
-### Générer les fichiers h5py nécessaires à l'entrainement
+### Generate the h5py files needed for training
 
-Une fois les datasets télechargés et les embeddings créés, il suffit d'utiliser `convert_cub_to_hd5_script.py` et `convert_flowers_to_hd5_script.py` (remplissez `config.yaml` correctement afin de faire fonctionner les scripts).
+Once the datasets have been downloaded and embeddings created, just use `convert_cub_to_hd5_script.py` and `convert_flowers_to_hd5_script.py` (fill in `config.yaml` correctly to make the scripts work).
 
-## Fonctionnement
+## Running
 
-Il faut tout d'abord utiliser le fichier `config.yaml` et remplir les chemins correspondants pour chaque champs. Seuls les champs `model_path` et `dataset_path` sont nécessaires si vous avez déjà les fichiers pré-entrainés, et si vous voulez uniquement faire la phase de test, seul `model_path` est nécessaire.
+First of all, you must use the file `config.yaml` and fill in the corresponding paths for each field. Only the fields `model_path` and `dataset_path` are required if you already have the pre-trained files, and if you only want to do the test phase, only `model_path` is required.
 
-### Entrainement
+### Training
 
-Pour entrainer le modèle, il faut : 
-* choisir les arguments pertinents dans `runtime.py`
-  * `--inference, default=False` pour l'entrainement et `default=True` pour le test.
-  * `--cls`, sélectionner la valeur désirée.
-  * `--pre_trained_disc` et `--pre_trained_gen` avec `default=None` pour l'entrainement et le chemin correspondant aux modèles pré-entrainés pour le test.
-  * `--dataset` avec la valeur `birds` ou `flowers`.
-  * `--num_workers, default=0` changer la valeur si on utilise le multiprocessing.
-  * `--epochs, default=200` c'est la valeur recommandée.
-  * vous n'avez pas besoin de modifier les autres valeurs.
-* lancer `visdom` et ouvrir son navigateur à l'adresse indiquée pour voir l'évolution du modèle en temps réel (génération d'images par batch et tracés des fonctions de perte du générateur et du discriminateur).
-* lancer `python runtime.py`
-* les checkpoints vont apparaitre dans le dossier `checkpoints` toutes les 10 epochs.
+To train the model, you must: 
+* select the relevant arguments in `runtime.py`
+  * `--inference, default=False` for training and `default=True` for testing.
+  * `--cls`, select the desired value.
+  * `--pre_trained_disc` and `--pre_trained_gen` with `default=None` for training and the path corresponding to the models pre-trained for the test.
+  * `--dataset` with the value `birds` or `flowers`.
+  * `--num_workers, default=0` change the value if using multiprocessing.
+  * `--epochs, default=200` is the recommended value.
+  * you do not need to change the other values.
+* launch `visdom` and open your browser at the address indicated to see the evolution of the model in real time (generation of images by batch and ploting of the loss functions of the generator and the discriminator).
+* run `python runtime.py`
+* checkpoints will appear in the `checkpoints` folder every 10 epochs.
 
 ### Test
 
-Pour tester le modèle, il faut :
-* choisir les arguments pertinentes dans `runtime.py`
-  * `--inference, default=True` pour le test.
-  * `--pre_trained_disc` et `--pre_trained_gen` avec `default=/my/path/disc_190.pth` (par exemple) pour le test.
-  * `--dataset` avec la valeur `birds` ou `flowers`.
-  * `--save_path` désigne le nom du dossier dans lequel vont être générés les résultats
-  * les autres valeurs n'ont pas d'importance.
-* lancer `python runtime.py` (pas besoin de `visdom`)
-* les images générées vont apparaître dans le dossier indiqué par `--save_path`
+To test the model, you must:
+* select the relevant arguments in `runtime.py`
+  * `--inference, default=True` for the test.
+  * `--pre_trained_disc` and `--pre_trained_gen` with `default=/my/path/disc_190.pth` (for example) for the test.
+  * `--dataset` with the value `birds` or `flowers`.
+  * `--save_path` refers to the name of the folder in which the results will be generated
+  * the other values do not matter.
+* run `python runtime.py` (no need for `visdom`)
+* the generated images will appear in the folder indicated by `--save_path`
 
 ### Evaluation
 
-Pour ce projet nous n'avons pas utilisé de fonctions mathématiques à proprement parler pour l'évaluation du modèle. L'utilisation de métriques d'évaluation adéquates pour les GANs étant un sujet actif de recherche nous avons préféré évaluer notre modèle de façon plus simpliste à l'aide de la compréhension du texte que le générateur est censé respecter. Sur les images suivantes de fleurs on peut voir que le vocabulaire en question est bien compris. White vs Yellow vs Purple, Big vs Large vs Thin, etc. Les meilleurs résultats sont obtenus pour les fleurs qui possèdent une distribution à apprendre moins complexe que les oiseaux par exemple. Les résultats obtenus peuvent être testés sur le site web fourni.
+For this project we did not use mathematical functions for the evaluation of the model. The use of appropriate evaluation metrics for GANs being an active research subject, we preferred to evaluate our model in a more simplistic way using the understanding of the text that the generator is supposed to respect. On the following pictures of flowers you can see that the vocabulary in question is well understood. White vs Yellow vs Purple, Big vs Large vs Thin, etc. The best results are obtained for flowers that have a less complex learning distribution than birds, for example. The results obtained can be tested on the website provided.
 
 <div>
   <p align="center">
@@ -83,7 +83,7 @@ Pour ce projet nous n'avons pas utilisé de fonctions mathématiques à propreme
 
 ### Interpolation
 
-Il est également possible de procéder à une interpolation des embeddings et de générer les images associées. Ci-dessous un exemple des résultats obtenus.
+It is also possible to interpolate the embeddings and generate the associated images. Below is an example of the results obtained.
 
 <div>
   <p align="center">
@@ -91,11 +91,11 @@ Il est également possible de procéder à une interpolation des embeddings et d
   </p>
 </div>
 
-Il est possible de reproduire les résultats d'interpolation à l'aide du site web fourni.
+It is possible to reproduce the interpolated results using the website provided.
 
-### Website
+## Website
 
-Un site web (mode local) permet de générer des images avec les modèles pré-entraînés fournis plus haut à partir de vos propres descriptions. Ci-dessous, quelques exemples de générations possibles. Consultez le dossier `Website`pour en savoir plus sur son lancement en mode local.
+A website (local mode) allows you to generate images with the pre-trained models provided above from your own descriptions. Below are some examples of possible generations. See the `Website` folder for more information about launching it in local mode.
 
 <div>
   <p align="center">
@@ -121,14 +121,12 @@ Un site web (mode local) permet de générer des images avec les modèles pré-e
   </p>
 </div>
 
-### Authors
+## Authors
 
 * Antoine ABHAY
 * Paola de PERTHUIS
 * Pascal GODBILLOT
 * Théo LACOUR
 
-### Remerciements
-Merci à M. Liming Chen d'avoir été notre tuteur pour ce projet, ainsi qu'à Daniel Muller et à Mohsen Ardabilian pour leurs critiques constructives.
-
-
+## Acknowledgements
+Special thanks to Mr. Liming Chen for being our tutor for this project, and to Daniel Muller and Mohsen Ardabilian for their constructive criticism.
