@@ -2,9 +2,9 @@
 
 This project is based on Reed Scott's article [Generative Adversarial Text-to-Image Synthesis](https://arxiv.org/abs/1605.05396) and builds on its implementation by [Alaa El-Nouby](https://github.com/aelnouby/Text-to-Image-Synthesis). The originality of our work consists of two points: 
 * the implementation of a test function that was not present at the base at Alaa El-Nouby;
-* the creation of embeddings based on[InferSent](https://github.com/facebookresearch/InferSent) which is a different language model from the one used by Reed Scott.
+* the creation of embeddings based on [InferSent](https://github.com/facebookresearch/InferSent) which is a different language model from the one used by Reed Scott.
 
-A report for this project is available [here](https://drive.google.com/open?id=1T_mjcS-bOJ9QpskBmkN2DhW2jcPj5AqZ) and the PDF file that was used for the class presentation on the 03/28/2019 is also available [here](https://drive.google.com/open?id=1mn9TQtpkRnBvLuiPcBTV3JbLZBXOOfTc)
+A report for this project is available [here](https://drive.google.com/open?id=1T_mjcS-bOJ9QpskBmkN2DhW2jcPj5AqZ) and the PDF file that was used for the class presentation on the 03/28/2019 is also available [here](https://drive.google.com/open?id=1mn9TQtpkRnBvLuiPcBTV3JbLZBXOOfTc).
 
 ## Pre-trained models
 
