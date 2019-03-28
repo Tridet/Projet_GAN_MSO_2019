@@ -1,3 +1,5 @@
+This README file is from [Alaa El-Nouby](https://github.com/aelnouby/Text-to-Image-Synthesis), we adapted his code for our own purpose.
+
 # Text-to-Image-Synthesis
 
 ## Intoduction
