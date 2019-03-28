@@ -1,6 +1,6 @@
 # Generative Adversarial Text to Image Synthesis
 
-This project is based on Reed Scott's article [Generative Adversarial Text-to-Image Synthesis](https://arxiv.org/abs/1605.05396) and builds on its implementation by[Alaa El-Nouby](https://github.com/aelnouby/Text-to-Image-Synthesis). The originality of our work consists of two points: 
+This project is based on Reed Scott's article [Generative Adversarial Text-to-Image Synthesis](https://arxiv.org/abs/1605.05396) and builds on its implementation by [Alaa El-Nouby](https://github.com/aelnouby/Text-to-Image-Synthesis). The originality of our work consists of two points: 
 * the implementation of a test function that was not present at the base at Alaa El-Nouby;
 * the creation of embeddings based on[InferSent](https://github.com/facebookresearch/InferSent) which is a different language model from the one used by Reed Scott.
 
