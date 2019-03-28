@@ -4,7 +4,7 @@ This project is based on Reed Scott's article [Generative Adversarial Text-to-Im
 * the implementation of a test function that was not present at the base at Alaa El-Nouby;
 * the creation of embeddings based on[InferSent](https://github.com/facebookresearch/InferSent) which is a different language model from the one used by Reed Scott.
 
-A report for this project is available [here](https://drive.google.com/open?id=1Z74FDeyRjbC6pnhI8lxJlq4QByM_K-kA)
+A report for this project is available [here](https://drive.google.com/open?id=1Z74FDeyRjbC6pnhI8lxJlq4QByM_K-kA).
 
 ## Pre-trained models
 
@@ -16,7 +16,7 @@ To reproduce the results, you can download the datasets [Caltech-UCSD Birds 200]
 
 However, we will use the embeddings that we designed with Infersent, and that are available here (files in h5 format):
 * [flowers_infersent](https://drive.google.com/open?id=1QNo5hqzWQhJOB2zjl0xyLgDHshL_iLl5) ;
-* [birds_infersent](https://drive.google.com/open?id=1f_eXTUqlYSI7MurSIFhunzsRES3Pu6Ph)
+* [birds_infersent](https://drive.google.com/open?id=1f_eXTUqlYSI7MurSIFhunzsRES3Pu6Ph).
 
 ### Embeddings
 
@@ -35,29 +35,29 @@ First of all, you must use the file `config.yaml` and fill in the corresponding 
 ### Training
 
 To train the model, you must: 
-* select the relevant arguments in `runtime.py`
-  * `--inference, default=False` for training and `default=True` for testing.
-  * `--cls`, select the desired value.
-  * `--pre_trained_disc` and `--pre_trained_gen` with `default=None` for training and the path corresponding to the models pre-trained for the test.
-  * `--dataset` with the value `birds` or `flowers`.
-  * `--num_workers, default=0` change the value if using multiprocessing.
-  * `--epochs, default=200` is the recommended value.
+* select the relevant arguments in `runtime.py`;
+  * `--inference, default=False` for training and `default=True` for testing;
+  * `--cls`, select the desired value;
+  * `--pre_trained_disc` and `--pre_trained_gen` with `default=None` for training and the path corresponding to the models pre-trained for the test;
+  * `--dataset` with the value `birds` or `flowers`;
+  * `--num_workers, default=0` change the value if using multiprocessing;
+  * `--epochs, default=200` is the recommended value;
   * you do not need to change the other values.
-* launch `visdom` and open your browser at the address indicated to see the evolution of the model in real time (generation of images by batch and ploting of the loss functions of the generator and the discriminator).
-* run `python runtime.py`
+* launch `visdom` and open your browser at the address indicated to see the evolution of the model in real time (generation of images by batch and ploting of the loss functions of the generator and the discriminator);
+* run `python runtime.py`;
 * checkpoints will appear in the `checkpoints` folder every 10 epochs.
 
 ### Test
 
 To test the model, you must:
-* select the relevant arguments in `runtime.py`
-  * `--inference, default=True` for the test.
-  * `--pre_trained_disc` and `--pre_trained_gen` with `default=/my/path/disc_190.pth` (for example) for the test.
-  * `--dataset` with the value `birds` or `flowers`.
+* select the relevant arguments in `runtime.py`;
+  * `--inference, default=True` for the test;
+  * `--pre_trained_disc` and `--pre_trained_gen` with `default=/my/path/disc_190.pth` (for example) for the test;
+  * `--dataset` with the value `birds` or `flowers`;
   * `--save_path` refers to the name of the folder in which the results will be generated
   * the other values do not matter.
-* run `python runtime.py` (no need for `visdom`)
-* the generated images will appear in the folder indicated by `--save_path`
+* run `python runtime.py` (no need for `visdom`);
+* the generated images will appear in the folder indicated by `--save_path`.
 
 ### Evaluation
 
